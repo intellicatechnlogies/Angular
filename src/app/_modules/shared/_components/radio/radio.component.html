@@ -1,0 +1,12 @@
+<div class='fin-radio'>
+  <mat-radio-button [value]="value" [checked]="selected" (change)="onChange.emit($event)" [disabled]="disabled"
+    [labelPosition]="labelPosition" [required]="required" [formControl]="control">
+    @if (label) {
+    <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+    }
+
+  </mat-radio-button>
+  @if (control.invalid) {
+  <mat-error>{{getErrorMessage() | translate}}</mat-error>
+  }
+</div>

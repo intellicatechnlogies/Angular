@@ -1,0 +1,39 @@
+@import '../../../../../assets/scss/font.scss';
+
+::ng-deep {
+  .fin-input {
+    .fin-text-area {
+      border: 1px solid var(--color-border);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+
+      &:hover {
+        border: 1px solid var(--color-primary);
+      }
+      
+      textarea {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 28px;
+        color: var(--color-black);
+        font-family: $font-primary;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          color: var(--color-black);
+          font-family: $font-primary;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 28px;
+        }
+      }
+    }
+    img {
+      transform: translate(0 , -6px);
+    }
+  }
+}

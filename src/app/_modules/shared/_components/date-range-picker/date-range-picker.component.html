@@ -1,0 +1,20 @@
+<div class='fin-input'>
+  @if (label) {
+    <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+    }
+  <mat-form-field appearance="outline">
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start Date" [formControl]="control" [required]="required" [value]="value"  (dateChange)="afterDateChange.emit($event)"> 
+      <input matEndDate placeholder="End Date" [formControl]="control" [required]="required" [value]="value" (dateChange)="afterDateChange.emit($event)">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+      <img matDatepickerToggleIcon src="assets/images/calendarLight.svg" alt="calendar.svg">
+    </mat-datepicker-toggle>
+    <mat-date-range-picker #picker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-date-range-picker>
+  </mat-form-field>
+</div>

@@ -1,0 +1,110 @@
+@import 'theme-color.scss';
+@import 'font.scss';
+
+html {
+  font-size: $font-size;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: $font-primary !important;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  font-family: $font-primary;
+}
+
+.fin-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .required-field {
+    &::after {
+      content: '*';
+      color: $color-red;
+    }
+  }
+}
+
+.fin-radio {
+  .required-field {
+    &::after {
+      content: '*';
+      color: $color-red;
+    }
+  }
+}
+
+.required-field {
+  &::after {
+    content: '*';
+    color: $color-red;
+  }
+}
+
+input {
+  color: var(--color-black) !important;
+
+  &::placeholder {
+    color: var(--color-black) !important;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.col-spacer {
+  width: 0.5rem;
+}
+
+.row-spacer {
+  height: 0.5rem;
+}
+
+[data-theme="dark"] {
+  .active-link {
+    background-color: var(--color-dark-secondary) !important;
+  }
+}
+
+[data-theme="light"] {
+  .active-link {
+    background-color: var(--color-border) !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-primary;
+  border-radius: 6px;
+  border: 3px solid $color-secondary;
+}

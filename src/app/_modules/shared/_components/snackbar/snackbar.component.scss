@@ -1,0 +1,23 @@
+.snackbar {
+    min-width: 41rem;
+    border-radius: 0.43rem;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-weight: 500;
+
+    .snackbar-msg-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .copytoClipboard {
+        cursor: pointer;
+    }
+}

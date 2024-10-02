@@ -1,0 +1,84 @@
+<div class="app-side-menu">
+  <div class="menu-header">
+    @if(theme === 'dark') {
+      @if(isMenuCollaspsed) {
+        <h1>IT</h1>
+      }@else {
+        <h1>Intellica Technology</h1>
+      }
+      <!-- <img [src]="'../../../../../assets/images/' + (isMenuCollaspsed ? 'logo': 'logo') +'.png'" alt=""> -->
+    }
+    @if(theme === 'light') {
+      @if(isMenuCollaspsed) {
+        <h1>IT</h1>
+      }@else {
+        <h1>Intellica Technology</h1>
+      }
+      <!-- <img [src]="'../../../../../assets/images/' + (isMenuCollaspsed ? 'logo': 'logo') +'.png'" alt=""> -->
+    }
+    <img [ngClass]="isMenuCollaspsed ? 'toggle-rotate' : ''" src="../../../../../assets/images/toggle.svg" alt="icon"
+      (click)="isMenuCollaspsed = !isMenuCollaspsed; toggleMenu.emit(isMenuCollaspsed);activeExpandItem = []" />
+  </div>
+
+  <div class="menu-container">
+    @if (isMenuCollaspsed) {
+    @for (item of menuList; track $index) {
+    @if (item.type === 'link') {
+    <div class="link-menu" matTooltip="{{item.label}}">
+      <img [src]='activeExpandItem.includes($index) || theme === "dark" ? item.iconSelected : item.icon' alt="icon"  [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" />
+    </div>
+    }
+    <div class="collapse-menu" *ngIf="item.type === 'sub' && item.children?.length">
+      <div class='link-menu' (click)="activeCollapseItem = $index"
+        [ngClass]="{'active': activeCollapseItem === $index}" matTooltip="{{item.label}}">
+        <img [src]='activeCollapseItem === $index || theme === "dark" ? item.iconSelected : item.icon' alt="icon"
+          [matMenuTriggerFor]="menu">
+        <mat-menu #menu="matMenu" xPosition="after">
+          @for (item of item.children; track $index) {
+          <button routerLink="{{item.path}}" mat-menu-item>{{item.label}}</button>
+          }
+        </mat-menu>
+      </div>
+    </div>
+    }
+    }
+
+    @if (!isMenuCollaspsed) {
+    @for (item of menuList; track $index) {
+    @if (item.type === 'link') {
+    <div class="link-menu">
+      <img [src]='activeExpandItem.includes($index) || theme === "dark" ? item.iconSelected : item.icon' alt="icon" />
+      <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{item.label}}</a>
+    </div>
+    }
+    @if (item.type === 'sub' && item.children?.length) {
+    <div class="sub-menu">
+      <mat-accordion multi="true">
+        <mat-expansion-panel class="mat-elevation-z0" hideToggle (opened)="onOpenMenu($index)"
+          (closed)="onCloseMenu($index)">
+          <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+            <mat-panel-description>
+              <div class="sub-sec">
+                <img [src]='activeExpandItem.includes($index) || theme === "dark" ? item.iconSelected : item.icon' alt='icon' />
+                <a>{{item.label}}</a>
+              </div>
+              <mat-icon class="arrow-rotate">keyboard_arrow_right</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="sub-child" *ngFor="let child of item.children" role='link' [routerLink]="child.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <a>
+              <img [src]='child.icon' alt='icon' />
+              {{child.label}}
+            </a>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    }
+    }
+    }
+  </div>
+  <!-- <div class="menu-footer">
+    <img [src]="'../../../../../assets/images/' + (isMenuCollaspsed ? 'footer2': 'footer') +'.svg'" alt="icon">
+  </div> -->
+</div>

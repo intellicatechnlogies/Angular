@@ -1,0 +1,15 @@
+<div class='fin-confirmation'>
+  <h4 mat-dialog-title>Reject</h4>
+  <mat-dialog-content>
+    <div class="dialog-content">
+      <img src="assets/images/info.svg" alt="">
+      <h1>{{message}}</h1>
+      <fin-text-area [placeholder]="'Reason'" [required]="false" [control]="control"></fin-text-area>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <fin-button [label]="cancelButtonLabel" [type]="'secondary'" [disabled]="false" (afterClick)="onCancel()"></fin-button>
+    <fin-button [label]="confirmationButtonLabel" [type]="'primary'" [disabled]="false" (afterClick)="onConfirm()"></fin-button>
+  </mat-dialog-actions>
+
+</div>

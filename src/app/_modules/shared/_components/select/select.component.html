@@ -1,0 +1,23 @@
+<div class="fin-input">
+  @if (label) {
+    <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+  }
+  <mat-form-field appearance="outline" [ngClass]="disabled ?  'mat-mdc-form-field-disabled': '' ">
+    <mat-select 
+      [placeholder]="placeholder | translate" 
+      [value]="value" 
+      [formControl]='control' 
+      [required]="required" 
+      [multiple]="multiSelect"
+      (selectionChange)="afterSelectionChange.emit($event)"
+      [panelClass]="'selectbox-white-panel'"
+      >
+      @for(option of optionsList; track $index) {
+        <mat-option [value]="getName ? option[getName] : option">{{ displayName ? option[displayName] : option }}</mat-option>
+      }
+    </mat-select>
+    @if (control.invalid) {
+      <mat-error>{{getErrorMessage() | translate}}</mat-error>
+    }
+  </mat-form-field>
+</div>

@@ -1,0 +1,21 @@
+<button 
+  mat-raised-button  
+  [ngClass]="type === 'primary' ? 'primary-btn' : type === 'accent' ? 'accent-btn': 'secondary-btn'" 
+  [disabled]="disabled"
+  (click)="$event.preventDefault();afterClick.emit()"
+  [matTooltip]="tooltip ? (tooltip | translate) : (label | translate)"
+  >
+  @if (label) {
+    <div class='btn-label'>
+      @if (isIcon) {
+        <img [src]="iconPath" /> 
+      }
+      
+      {{ label | translate }}
+
+      @if(count) {
+        <span>{{ count }}</span>
+      }
+    </div>
+  }
+</button>

@@ -1,0 +1,34 @@
+::ng-deep {
+  .input-box,.select-box {
+    .mat-mdc-form-field-subscript-wrapper {
+      height: 0 !important;
+    }
+  }
+
+  .delete-button,.view-button, .reject-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-box {
+    padding: 5px 0;
+  }
+
+  .view-button {
+    img {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+}

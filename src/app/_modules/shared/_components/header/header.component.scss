@@ -1,0 +1,102 @@
+@import '../../../../../assets/scss/theme-color.scss';
+@import '../../../../../assets/scss/font.scss';
+
+.app-header {
+  mat-toolbar {
+    background: var(--color-white);
+    padding: 2.5rem 2rem 2rem 1rem;
+    border: 1px solid var(--color-border);
+
+    .main-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left-section {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        h1 {
+          color: var(--color-primary);
+          font-size: 1.25rem;
+          font-family: $font-primary;
+          font-weight: 600;
+        }
+      }
+
+      .right-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .font-switcher {
+          height: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+
+          p {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: $font-primary;
+            color: var(--color-primary);
+            cursor: pointer;
+          }
+        }
+
+        .theme-switcher {
+          height: 2rem;
+          padding-left: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          border-left: 2px solid var(--color-border);
+
+          img {
+            cursor: pointer;
+          }
+        }
+
+        .lang-switcher {
+          height: 2rem;
+          padding: 0 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          border-right: 2px solid $color-secondary;
+          border-left: 2px solid $color-secondary;
+          cursor: pointer;
+
+          p {
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: $font-primary;
+            color: var(--color-primary);
+          }
+        }
+
+        .user-profile {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+
+          img {
+            border: 1px solid $color-yellow;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
+          p {
+            font-size: 0.875rem;
+            font-weight: 400;
+            font-family: $font-primary;
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}

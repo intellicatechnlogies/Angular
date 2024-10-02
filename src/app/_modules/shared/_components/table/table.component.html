@@ -1,0 +1,59 @@
+<div class="fin-table">
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0" (matSortChange)="sortData($event)">
+      @for (col of columns; track $index) {
+      <ng-container matColumnDef="{{ col?.field }}">
+        @if(col?.sort) {
+        <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="{{ col?.label  | translate}}">
+          @if (col?.field === 'select') {
+          @if(col?.label) {
+          {{ col?.label | translate }}
+          } @else {
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()"></mat-checkbox>
+          }
+          } @else {
+            {{ col?.label | translate }}
+          }
+        </th>
+        }@else {
+        <th mat-header-cell *matHeaderCellDef matTooltip="{{ col?.label  | translate }}">
+          @if (col?.field === 'select') {
+          @if(col?.label) {
+          {{ col?.label | translate }}
+          }@else {
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()"></mat-checkbox>
+          }
+          }@else {
+            {{ col?.label | translate }}
+          }
+        </th>
+        }
+        <td mat-cell *matCellDef="let row">
+          @if (col?.field === 'select') {
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ?  toggleRowsSelection(row)  : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+          }
+
+          @if (col?.field !== 'action') {
+          @if (col?.custom) {
+          <fin-custom-column [rowData]="row" [columnDetails]="col" [entity]='entity' (componentEvent)='customColumnEvent.emit($event)'></fin-custom-column>
+          }@else {
+          <div matTooltip="{{row[col?.field]}} ">
+            {{ row[col?.field] | titlecase }}
+          </div>
+          }
+          }
+          @if (col?.field === 'action') {
+          <fin-custom-action [rowData]="row" [entity]='entity'></fin-custom-action>
+          }
+        </td>
+      </ng-container>
+      }
+      <tr mat-header-row *matHeaderRowDef="displayColumns;sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+    </table>
+  </div>
+</div>

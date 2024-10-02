@@ -1,0 +1,73 @@
+@if (columnDetails?.render === "input-box" ) {
+  <div class="input-box">
+    <fin-input [placeholder]="columnDetails?.placeholder" [required]="false" [type]="columnDetails?.type" [value]="rowData[columnDetails?.field]" (afterInput)="onInput($event)"></fin-input>
+  </div>
+}
+
+@if(columnDetails?.render === "select-box") {
+  <div class="select-box">
+    <fin-select [placeholder]="columnDetails?.placeholder" [optionsList]="columnDetails?.optionsList" [required]="false"></fin-select>
+  </div>
+}
+
+@if (columnDetails?.render === "base-button") {
+  <div class="button-box">
+    <fin-button [label]="columnDetails?.disLabel" [type]="columnDetails?.type" [disabled]="columnDetails?.disabled" (afterClick)="onButtonClick()"></fin-button>
+  </div>
+}
+
+
+@if (columnDetails?.render === "button" && columnDetails?.type === "delete") {
+  <div class="delete-button" (click)="onButtonClick()">
+    <img src="assets/images/trash.svg" alt="delete">
+  </div>
+}
+
+@if(columnDetails?.render === "button" && columnDetails?.type === "view") {
+  <div class="view-button" (click)="viewButtonHandler()">
+    <img src="assets/images/detail.svg" alt="view">
+  </div>
+}
+
+@if(columnDetails?.render === "link") {
+  <div class="link">
+    @if (entity === 'confirmDisbursement' && columnDetails?.field === 'status') {
+      <a role='button' (click)="onlinkClick()">Confirm Disbursement</a>
+    }@else {
+      <a role='button' (click)="onlinkClick()">{{rowData[columnDetails?.field]}}</a>
+    }
+  </div>
+}
+
+@if(columnDetails?.render === "reject-button") {
+  <div class="reject-button" (click)="rejectButtonHandler()">
+    <img src="assets/images/reject.svg" alt="reject">
+  </div>
+}
+
+@if(entity === 'shgVoList' && (columnDetails?.field === "vo_formation_date" || columnDetails?.field === "shg_formation_date")) {
+  <p>{{getAge(rowData[columnDetails?.field])}} Years</p>
+}
+
+
+@if(entity === 'verifyCboProposal') {
+  @if(columnDetails.field === 'proposal_date') {
+    <p>{{rowData[columnDetails.field] | date: 'dd/MM/yyyy'}}</p>
+  }
+
+  @if(columnDetails.field === 'cbo_name') {
+    <p>{{rowData?.['details']?.[0]?.[columnDetails?.field]}}</p>
+  }
+
+  @if(columnDetails.field === 'cbo_code') {
+    <p>{{rowData?.['details']?.[0]?.[columnDetails?.field]}}</p>
+  }
+
+  @if(columnDetails.field === 'amount') {
+    <p>{{rowData?.['details']?.[0]?.[columnDetails?.field] | numberFormat }}</p>
+  }
+
+  @if(columnDetails.field === 'remarks') {
+    <p>{{rowData?.['details']?.[0]?.[columnDetails.field]}}</p>
+  }
+}

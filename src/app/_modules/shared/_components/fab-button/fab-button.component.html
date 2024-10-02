@@ -1,0 +1,9 @@
+<button 
+  mat-mini-fab  
+  [ngClass]="type === 'primary' ? 'fab-primary' : 'fab-secondary'" 
+  [disabled]="disabled"
+  (click)="afterClick.emit()"
+  [matTooltip]="tooltip ? (tooltip | translate) : ''"
+  >
+    <img [src]="iconPath" /> 
+</button>

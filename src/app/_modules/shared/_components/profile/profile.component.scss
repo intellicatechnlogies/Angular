@@ -1,0 +1,105 @@
+@import '../../../../../assets/scss/font.scss';
+
+::ng-deep {
+  .profile {
+    min-width: 250px;
+    padding: 0.5rem 0;
+
+    .profile-header {
+      display: flex;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+  
+      img {
+        border: 1px solid var(--color-yellow); 
+        border-radius: 50%;
+      }
+  
+      .user-name {
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: $font-primary;
+        color: var(--color-primary);
+      }
+  
+      .user-role {
+        font-size: 0.875rem;
+        font-weight: 400;
+        font-family: $font-primary;
+        color: var(--color-primary);
+      }
+  
+    }
+  
+  
+    .profile-content {
+      border-bottom: 1px solid var(--color-border);
+      .profile-roles {
+        .mat-accordion {
+          .mat-expansion-panel {
+            background-color: transparent;
+            border-radius: 0;
+
+            .mat-expansion-panel-header  {
+              .mat-content {
+                .mat-expansion-panel-header-title {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  gap: 0.5rem;
+                  font-size: 1rem;
+                  font-weight: 400;
+                  font-family: $font-primary;
+                  color: var(--color-primary);
+                }
+              }
+            }
+            .mat-expansion-panel-content {
+              .mat-expansion-panel-body {
+                .profile-roles-list {
+                  padding-left: 2rem;
+
+                  p {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    font-family: $font-primary;
+                    color: var(--color-primary);
+                    padding-bottom: 0.5rem;
+                    cursor: pointer;
+
+                    &:hover {
+                      color: var(--color-yellow);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .active-role {
+        color: var(--color-yellow) !important;
+      }
+    }
+  
+    .logout-section {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1rem 1rem 0.5rem 2rem;
+      gap: 0.5rem;
+      cursor: pointer;
+  
+      h1{
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: $font-primary;
+        color: var(--color-primary);
+      }
+    }
+  }
+}
