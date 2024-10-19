@@ -1,0 +1,85 @@
+<div class='pagination'>
+  <ng-template #first><span aria-hidden="true" i18n="@@ngb.pagination.first">&laquo;&laquo;</span></ng-template>
+  <ng-template #previous><span aria-hidden="true" i18n="@@ngb.pagination.previous">&laquo;</span></ng-template>
+  <ng-template #next><span aria-hidden="true" i18n="@@ngb.pagination.next">&raquo;</span></ng-template>
+  <ng-template #last><span aria-hidden="true" i18n="@@ngb.pagination.last">&raquo;&raquo;</span></ng-template>
+  <ng-template #ellipsis>...</ng-template>
+  <ng-template #defaultNumber let-page let-currentPage="currentPage">{{ page }}</ng-template>
+  
+  
+  <ng-template #defaultPages let-page let-pages="pages" let-disabled="disabled">
+    @for (pageNumber of pages; track $index) {
+    <li class="page-item" [class.active]="pageNumber === page" [class.disabled]="isEllipsis(pageNumber) || disabled"
+      [attr.aria-current]="pageNumber === page ? 'page' : null">
+      @if (isEllipsis(pageNumber)) {
+      <a class="page-link" tabindex="-1" aria-disabled="true">
+        <ng-template [ngTemplateOutlet]="tplEllipsis?.templateRef || ellipsis"
+          [ngTemplateOutletContext]="{ disabled: true, currentPage: page }" />
+      </a>
+      } @else {
+      <a class="page-link" href (click)="selectPage(pageNumber); $event.preventDefault()"
+        [attr.tabindex]="disabled ? '-1' : null" [attr.aria-disabled]="disabled ? 'true' : null">
+        <ng-template [ngTemplateOutlet]="tplNumber?.templateRef || defaultNumber"
+          [ngTemplateOutletContext]="{ disabled: disabled, $implicit: pageNumber, currentPage: page }" />
+      </a>
+      }
+    </li>
+    }
+  </ng-template>
+  <ul [class]="'pagination' + (size ? ' pagination-' + size : '')">
+    @if (boundaryLinks) {
+    <li class="page-item" [class.disabled]="previousDisabled()">
+      <a aria-label="First" i18n-aria-label="@@ngb.pagination.first-aria" class="page-link" href
+        (click)="selectPage(1); $event.preventDefault()" [attr.tabindex]="previousDisabled() ? '-1' : null"
+        [attr.aria-disabled]="previousDisabled() ? 'true' : null">
+        <ng-template [ngTemplateOutlet]="tplFirst?.templateRef || first"
+          [ngTemplateOutletContext]="{ disabled: previousDisabled(), currentPage: page }" />
+      </a>
+    </li>
+    }
+    @if (directionLinks) {
+    <li class="page-item" [class.disabled]="previousDisabled()">
+      <a aria-label="Previous" i18n-aria-label="@@ngb.pagination.previous-aria" class="page-link" href
+        (click)="selectPage(page - 1); $event.preventDefault()" [attr.tabindex]="previousDisabled() ? '-1' : null"
+        [attr.aria-disabled]="previousDisabled() ? 'true' : null">
+        <ng-template [ngTemplateOutlet]="tplPrevious?.templateRef || previous"
+          [ngTemplateOutletContext]="{ disabled: previousDisabled() }" />
+      </a>
+    </li>
+    }
+    <ng-template [ngTemplateOutlet]="tplPages?.templateRef || defaultPages"
+      [ngTemplateOutletContext]="{ $implicit: page, pages: pages, disabled: disabled }" />
+    @if (directionLinks) {
+    <li class="page-item" [class.disabled]="nextDisabled()">
+      <a aria-label="Next" i18n-aria-label="@@ngb.pagination.next-aria" class="page-link" href
+        (click)="selectPage(page + 1); $event.preventDefault()" [attr.tabindex]="nextDisabled() ? '-1' : null"
+        [attr.aria-disabled]="nextDisabled() ? 'true' : null">
+        <ng-template [ngTemplateOutlet]="tplNext?.templateRef || next"
+          [ngTemplateOutletContext]="{ disabled: nextDisabled(), currentPage: page }" />
+      </a>
+    </li>
+    }
+    @if (boundaryLinks) {
+    <li class="page-item" [class.disabled]="nextDisabled()">
+      <a aria-label="Last" i18n-aria-label="@@ngb.pagination.last-aria" class="page-link" href
+        (click)="selectPage(pageCount); $event.preventDefault()" [attr.tabindex]="nextDisabled() ? '-1' : null"
+        [attr.aria-disabled]="nextDisabled() ? 'true' : null">
+        <ng-template [ngTemplateOutlet]="tplLast?.templateRef || last"
+          [ngTemplateOutletContext]="{ disabled: nextDisabled(), currentPage: page }" />
+      </a>
+    </li>
+    }
+  </ul>
+
+
+  <div class="footer-right">
+    <p>Showing 1 to {{pageSize}} of {{collectionSize}} entries</p>
+    <div class="form-group">
+        <select class="form-control" (change)="pageSizeChange.emit($event)">
+            <option value="10">Show 10</option>
+            <option value="20">Show 20</option>
+            <option value="30">Show 30</option>
+        </select>
+    </div>
+</div>
+</div>

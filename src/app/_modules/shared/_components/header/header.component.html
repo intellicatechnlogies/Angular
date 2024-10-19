@@ -1,0 +1,62 @@
+<div class='app-header'>
+  <mat-toolbar>
+    <div class="main-header">
+      <div class="left-section">
+        @if(theme === 'light'){
+          <h1>Intellica Technology</h1>
+          <!-- <img src="../assets/images/lokOsLogo.svg" alt="menu"> -->
+          <!-- <img src="../assets/images/lokOsText.svg" alt="menu"> -->
+        }
+        @if(theme === 'dark'){
+          <h1>Intellica Technology</h1>
+          <!-- <img src="../assets/images/lokOsLogo-white.svg" alt="menu"> -->
+        }
+      </div>
+      <div class="right-section">
+        <div class="font-switcher">
+          <p (click)="setFontSize('a+')">A<sup>+</sup></p>
+          <p (click)="setFontSize('a')">A<sup></sup></p>
+          <p (click)="setFontSize('a-')">A<sup>-</sup></p>
+        </div>
+
+        <div class="theme-switcher">
+          @if(theme === 'dark'){
+            <img src="../assets/images/sun.svg" alt="sun" (click)="setTheme('light')" >
+          }
+          @if(theme === 'light'){
+            <img src="../assets/images/moon.svg" alt="moon" (click)="setTheme('dark')"/>
+          }
+        </div>
+        
+        <div class="lang-switcher" [matMenuTriggerFor]="langMenu">
+          @if(theme === 'dark'){
+            <img src="../assets/images/lang-white.svg" alt="globe">
+          }
+          @if(theme === 'light'){
+            <img src="../assets/images/lang.svg" alt="globe">
+          }
+          <p>{{selectedLanguage.translation }}</p>
+          <img src="../assets/images/arrowDown.svg" alt="arrow">
+          
+          <mat-menu #langMenu="matMenu" class='mat-elevation-z3'>
+            @for (lang of appLanguages; track $index) {
+              <p mat-menu-item (click)="onLanguageChange(lang)">
+                {{lang.translation}} @if(lang.langCode!=='en'){({{lang.langName}})}
+                @if (lang.langCode === selectedLanguage.langCode) {
+                  <img src="../assets/images/check.svg" alt="">
+                }
+              </p>
+              <mat-divider></mat-divider>
+            }
+          </mat-menu>
+        </div>
+        <div class="user-profile" [matMenuTriggerFor]="profileMenu">
+          <img src="../assets/images/profileLogo.svg" alt="user">
+          <mat-menu #profileMenu="matMenu" class='mat-elevation-z3'>
+            <fin-profile></fin-profile>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>

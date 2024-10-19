@@ -1,0 +1,18 @@
+<div class='fin-input'>
+  @if (label) {
+  <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+  }
+  <mat-form-field appearance="outline" [ngClass]="readonly ?  'mat-mdc-form-field-disabled': '' ">
+    <input matInput [matDatepicker]="datepicker" [placeholder]="placeholder | translate" [formControl]="control"
+      [required]="required" [value]="value" (focus)="afterFocus.emit($event)" (dateChange)="afterDateChange.emit($event)" [readonly]="readonly" />
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker" [disabled]='readonly'>
+      <img matDatepickerToggleIcon src="assets/images/calendarLight.svg" alt="calendar.svg">
+    </mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+</div>

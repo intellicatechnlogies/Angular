@@ -1,0 +1,55 @@
+<div class='profile'>
+  <div class='profile-header'>
+    <img src="../assets/images/profileLogo.svg" alt="profile">
+    <div>
+      <p class='user-name'>{{userName}}</p>
+      <p class='user-role'>{{userRole}}</p>
+    </div>
+  </div>
+
+  <div class='profile-content'>
+    <div class='profile-roles'>
+      <mat-accordion>
+        <mat-expansion-panel class='mat-elevation-z0' (click)='$event.stopPropagation()'>
+          <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+            <mat-panel-title>
+              <img src="../assets/images/roles.svg" alt="">
+              <p>Select Role</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class='profile-roles-list'>
+            @for(role of loginInfo; track $index) {
+              <p (click)="navigateToSelectYourRole(role.roleName)" [ngClass]="{'active-role': role.roleName == selectedRole }"    >{{role.roleName}}</p>
+            }
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+  <div class='profile-content'>
+    <div class='profile-roles'>
+      <mat-accordion>
+        <mat-expansion-panel class='mat-elevation-z0' (click)='$event.stopPropagation()'>
+          <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+            <mat-panel-title>
+              <img src="../assets/images/helpSupport.svg" alt="">
+              <p>Help & Support</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class='profile-roles-list'>
+            @for(support of ['Ticket Support', 'Email Support', 'FAQs', 'User Manual']; track $index) {
+              <p>{{support}}</p>
+            }
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+
+  <div class='logout-section' (click)='logout()'>
+    <img src="../assets/images/logout.svg" alt="">
+    <h1>Logout</h1>
+  </div>
+</div>

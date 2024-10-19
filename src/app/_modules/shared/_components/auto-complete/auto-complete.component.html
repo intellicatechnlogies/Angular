@@ -1,0 +1,28 @@
+@if (!multiSelect) {
+  <div class='fin-input'>
+    @if (label) {
+      <mat-label [ngClass]="required ? 'required-field' : ''" >{{label | translate}}</mat-label>
+    }
+    <mat-form-field appearance="outline">
+      <input type="text"
+             [placeholder]="placeholder | translate"
+             matInput
+             [formControl]="control"
+             [matAutocomplete]="auto"
+             [required]="required"
+             [value]="value"
+             (focus)="afterFocus.emit($event)"
+             (input)="afterInput.emit($event)"
+             >
+        <img src="assets/images/dropDownArrow.svg" alt="icon" matSuffix  />
+      <mat-autocomplete 
+        #auto="matAutocomplete" 
+        (optionSelected)='optionSelected.emit($event)'
+        >
+        @for (option of optionsList; track option) {
+          <mat-option [value]="option">{{ displayName ? option[displayName] :  option}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+}

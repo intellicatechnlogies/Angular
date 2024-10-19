@@ -1,0 +1,27 @@
+<div class="fin-input">
+  @if (label) {
+    <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+  }
+  <div class='fin-text-area'>
+    <textarea 
+      [placeholder]="placeholder | translate" 
+      [value]="value" 
+      [formControl]='control'
+      [readonly]="readonly"
+      [required]="required"
+      [attr.disabled]="disabled"
+      (blur)="afterBlur.emit($event)"
+      (focus)="afterFocus.emit($event)"
+      (input)="afterInput.emit($event)"
+      ></textarea>
+      @if (iconPosition === iconPositions.RIGHT) {
+        <img [src]="iconPath" alt="icon" matSuffix>
+      }
+      @if(iconPosition === iconPositions.LEFT) {
+        <img [src]="iconPath" alt="icon" matPrefix>
+      }
+    </div>
+    @if (control.invalid && control.touched) {
+      <mat-error>{{getErrorMessage() | translate}}</mat-error>
+    }
+</div>

@@ -1,0 +1,18 @@
+.btn-label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-black);
+    background: var(--color-white);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

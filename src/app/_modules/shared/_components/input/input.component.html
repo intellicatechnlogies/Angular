@@ -1,0 +1,27 @@
+<div class="fin-input">
+  @if (label) {
+    <mat-label [ngClass]="required ? 'required-field' : ''">{{ label | translate }}</mat-label>
+  }
+  <mat-form-field appearance="outline" [ngClass]="readonly ?  'mat-mdc-form-field-disabled': '' ">
+    <input matInput 
+      [placeholder]="placeholder | translate" 
+      [value]="value" 
+      [formControl]='control'
+      [readonly]="readonly"
+      [required]="required"
+      (blur)="afterBlur.emit($event)"
+      (focus)="afterFocus.emit($event)"
+      (input)="afterInput.emit($event)"
+      [type]="type"
+      />
+      @if (iconPosition === iconPositions.RIGHT) {
+        <img [src]="iconPath" alt="icon" matSuffix (click)="afterIconClick.emit(iconPositions.RIGHT)">
+      }
+      @if(iconPosition === iconPositions.LEFT) {
+        <img [src]="iconPath" alt="icon" matPrefix (click)="afterIconClick.emit(iconPositions.LEFT)">
+      }
+      @if (control.invalid) {
+        <mat-error>{{getErrorMessage() | translate}}</mat-error>
+      }
+  </mat-form-field>
+</div>

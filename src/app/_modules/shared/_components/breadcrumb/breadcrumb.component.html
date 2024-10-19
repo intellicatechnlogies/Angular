@@ -1,0 +1,8 @@
+<div class='fin-breadcrumb'>
+  <ng-container *ngFor="let item of breadcrumbs; let i = index">
+    <a [routerLink]="item.link" routerLinkActive="active-breadcrumb-link" [routerLinkActiveOptions]="{exact: true}">
+      {{item.label}}
+      <span *ngIf="i < breadcrumbs.length - 1">/</span>
+    </a>
+  </ng-container>
+</div>

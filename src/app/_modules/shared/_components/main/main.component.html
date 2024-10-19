@@ -1,0 +1,13 @@
+<div class="app-main">
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" opened="true" [ngStyle]="collapse ? {width: '5rem'} : {width: '16rem'}">
+      <fin-side-menu (toggleMenu)='toggleMenu($event)'></fin-side-menu>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <fin-header></fin-header>
+      <div class="outlet-area" id='outlet'>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-drawer-container>
+</div>

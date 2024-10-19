@@ -1,0 +1,9 @@
+@if(entity === 'cboProposalStatus') {
+  <fin-button [type]="'primary'" [label]="'Re-Submit Proposal'"></fin-button>
+}
+
+@if(entity === 'approvedProposal') {
+  <div class='link'>
+    <a role='button' (click)="onLinkClick()">Generate FTO</a>
+  </div>
+}

@@ -1,0 +1,16 @@
+<div id="snackbar" class="snackbar">
+    <div class="snackbar-msg-container">
+        <img [src]="'../../../../../assets/images/'+ type +'_snackbar_icon.svg'" alt="image">
+        <p>
+            {{ message }}
+            @if(showHelperBlock) {
+            {{ helperHeading }}: {{ helperNumber }}
+            }
+        </p>
+    </div>
+
+    @if(showHelperBlock) {
+    <img [src]="'../../../../../assets/images/copy_to_clipboard_'+ theme +'.svg'" alt="copy to clipboard"
+        (click)="copyToClipboard()" class="copytoClipboard">
+    }
+</div>
