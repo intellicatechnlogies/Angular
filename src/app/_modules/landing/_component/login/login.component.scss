@@ -1,0 +1,47 @@
+::ng-deep {
+	.login {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+
+		img {
+			width: 100px;
+			height: 100px;
+		}
+
+		h1 {
+			color: var(--color-primary);
+			font-size: 2rem;
+			font-weight: 600;
+			padding: 1rem 0;
+		}
+
+		fin-input {
+			width: 100%;
+		}
+
+		fin-button {
+			width: 100%;
+
+			button {
+				width: 100%;
+			}
+		}
+
+		.forgot-password {
+			padding: 1rem 0;
+
+			a {
+				text-decoration: none;
+				color: var(--color-primary);
+				transition-duration: 0.3s;
+
+				&:hover {
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
