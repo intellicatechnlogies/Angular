@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../_services/auth/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SnackbarService } from '../../../../_services/snackbar/snackbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fin-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private router: Router
   ) { }
 
   initForm() {
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         if (res) {
           this.snackbarService.successSnackbar('Login Successful');
+          this.navigateToDashboard();
         }
       },
       error: (err: any) => {
@@ -43,4 +46,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  navigateToDashboard() {
+    this.router.navigate(['/main/dashboard']);
+  }
 }
