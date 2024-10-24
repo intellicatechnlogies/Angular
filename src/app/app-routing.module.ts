@@ -8,6 +8,7 @@ export const routes: Routes = [
   { path: 'landing-page', loadChildren: () => import('./_modules/landing/landing.module').then(m => m.LandingModule) },
   { path: 'main', component: MainComponent , children: [
     { path: 'dashboard', loadChildren: () => import('./_modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+    { path: 'services', loadChildren: () => import('./_modules/services/services.module').then(m => m.ServicesModule) },
     ]
   },
   { path: '**', component: PageNotFoundComponent }

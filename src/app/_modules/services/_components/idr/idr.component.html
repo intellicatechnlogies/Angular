@@ -1,0 +1,105 @@
+<div class="idr-contianer">
+    <mat-accordion class="example-headers-align idr-contianer-expansions" multi>
+  
+      <!-- PAN card expansion -->
+      <mat-expansion-panel class="idr-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title> PAN </mat-panel-title>
+        </mat-expansion-panel-header>
+  
+        <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+          <mat-form-field>
+            <mat-label>PAN Number</mat-label>
+            <input matInput name="panNumber" ngModel required/>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()" name="dob" readonly ngModel required />
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker> 
+
+          <div class="idr-pan-img">
+            <label>PAN Image</label>
+            <input name="panNumberimg" type="file" accept="image/*" ngModel required/>
+          </div>
+
+          <div class="idr-pan-live-img">
+            <label>PAN Live Image</label>
+            <input name="panNumberliveimg" type="file" accept="image/*"  ngModel required/>
+          </div>
+          
+  
+          <div class="idr-btn-container">
+            <button type="submit" name="pansubmitButton" id="pansubmitBtn">Submit</button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+  
+        <!-- DL expansion -->
+        <mat-expansion-panel class="idr-expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title> DL </mat-panel-title>
+            </mat-expansion-panel-header>
+      
+            <form (ngSubmit)="onSubmit(dlForm, 'DL', $event)" #dlForm="ngForm" id="DL">
+              <mat-form-field>
+                <mat-label>DL Number</mat-label>
+                <input matInput name="dlNumber" ngModel required/>
+              </mat-form-field>
+      
+              <mat-form-field>
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" name="dldob" readonly ngModel required />
+              </mat-form-field>
+              <mat-datepicker #picker></mat-datepicker> 
+    
+              <div class="idr-dl-img">
+                <label>DL Image</label>
+                <input name="dlNumberimg" type="file" accept="image/*" ngModel required/>
+              </div>
+    
+              <div class="idr-dl-live-img">
+                <label>DL Live Image</label>
+                <input name="dlumberliveimg" type="file" accept="image/*" ngModel required/>
+              </div>
+              
+      
+              <div class="idr-btn-container">
+                <button type="submit" name="dlsubmitButton" id="dlsubmitBtn">Submit</button>
+              </div>
+            </form>
+        </mat-expansion-panel>
+  
+      <!-- Voter expansion -->
+      <mat-expansion-panel class="idr-expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Voter </mat-panel-title>
+        </mat-expansion-panel-header>
+  
+        <form (ngSubmit)="onSubmit(voterForm, 'Voter', $event)" #voterForm="ngForm" id="Voter">
+          <mat-form-field>
+            <mat-label>EPIC Number</mat-label>
+            <input matInput name="epicNumber" ngModel required/>
+          </mat-form-field>
+  
+
+          <div class="idr-pan-img">
+            <label>Voter Image</label>
+            <input name="voterimg" type="file" accept="image/*" ngModel required/>
+          </div>
+
+          <div class="idr-pan-live-img">
+            <label>Live Image</label>
+            <input name="voterliveimg" type="file" accept="image/*"  ngModel required/>
+          </div>
+          
+  
+          <div class="idr-btn-container">
+            <button type="submit" name="votersubmitButton" id="voterubmitBtn">Submit</button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
