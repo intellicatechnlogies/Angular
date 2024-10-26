@@ -7,6 +7,20 @@ import { NgForm } from '@angular/forms'; // Import NgForm
   styleUrl: './kyc.component.scss'
 })
 export class KycComponent {
+  breadcrumbs = [
+    {
+      label: 'Services',
+      link: '/main/services/kyc'
+    }
+  ];
+
+
+
+
+
+
+
+
   onSubmit(form: NgForm, formId: string, event: Event): void {
     event.preventDefault(); // Prevent default form submission
     
