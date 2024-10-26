@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class HttpService {
 
-  backendEndpoint = '';
+  backendEndpoint = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 

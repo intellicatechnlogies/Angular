@@ -1,0 +1,46 @@
+<div class="landing-page">
+	<mat-toolbar>
+		<mat-toolbar-row>
+			<button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+				<mat-icon>menu</mat-icon>
+			</button>
+			<div fxFlex fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+				<img src="../../../../../assets/images/logo (2).png" alt="">
+				<h3>Intellica Technology</h3>
+			</div>
+			<div fxShow="true" fxHide.lt-md>
+				<a href="#" mat-button>Home</a>
+				<a href="#" mat-button>About Us</a>
+				<a href="#" mat-button>Services</a>
+				<a href="#" mat-button>Contact Us</a>
+				<a role="button" mat-button (click)="openLogin()">Login</a>
+			</div>
+		</mat-toolbar-row>
+	</mat-toolbar>
+
+	<mat-sidenav-container fxFlexFill>
+		<mat-sidenav #sidenav>
+			<mat-nav-list>
+				<a (click)="sidenav.toggle()" mat-button>Close</a>
+				<a href="#" mat-button>Home</a>
+				<a href="#" mat-button>About Us</a>
+				<a href="#" mat-button>Services</a>
+				<a href="#" mat-button>Contact Us</a>
+				<a href="#" mat-button>Login</a>
+			</mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content fxFlexFill>
+			<div class="welcome-banner">
+				<img src="../../../../../assets/images/welcome-banner.jpg" alt="">
+				<div class="welcome-text">
+					<h3>Verify Your Identity with Secure KYC Verification</h3>
+					<p>We are providing the platform of KYC process for verifying the identity of users on our platform.
+						It involves collecting and validating personal information, such as identification documents, to
+						ensure compliance with legal and regulatory standards, prevent fraud, and maintain the security
+						of our services.</p>
+				</div>
+			</div>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+
+</div>

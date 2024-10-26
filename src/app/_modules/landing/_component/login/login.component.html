@@ -1,0 +1,10 @@
+<div class="login">
+    <img src="../../../../../assets/images/logo (2).png" alt="logo">
+    <h1>Login To Intellica Technology</h1>
+    <fin-input [control]="$any(form.get('username'))" [label]="'Username' | translate" [placeholder]="'Username' | translate" [required]="true" [type]="'text'"></fin-input>
+    <fin-input [control]="$any(form.get('password'))" [label]="'Password' | translate" [placeholder]="'Password' | translate" [required]="true" [type]="'password'"></fin-input>
+    <fin-button [label]="'Login' | translate" [type]="'primary'" [disabled]="form.invalid" (afterClick)="login()"></fin-button>
+    <div class="forgot-password">
+        <a href="#">Forgot Password?</a>
+    </div>
+</div>

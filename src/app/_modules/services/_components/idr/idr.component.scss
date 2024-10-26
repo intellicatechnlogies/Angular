@@ -1,0 +1,33 @@
+.idr-contianer{
+    padding: 1rem;
+    &-expansions{
+      .idr-expansion-panel{
+        margin-bottom: 1rem;
+        mat-form-field{
+          margin-right: 1rem;
+          .mdc-text-field--filled:not(.mdc-text-field--disabled){
+            background-color: unset !important;
+          }
+          input{
+            padding: 1rem 0;
+          }
+        }
+        form{
+          display: flex;
+          gap: 1rem;
+          .idr-btn-container{
+            button{
+              background-color:  #0f3ebe;
+              color: #fff;
+              border: 1px solid #0f3ebe;
+              border-radius: 8px;
+              padding: 10px 15px;
+              margin: 5px 0;
+            }
+          }
+        }
+        
+      }
+    }
+  
+  }

@@ -1,0 +1,94 @@
+@import '../../../../../assets/scss/font.scss';
+
+::ng-deep {
+	.landing-page {
+		height: 100%;
+		width: 100%;
+
+		mat-toolbar {
+			background-color: var(--color-primary);
+			color: var(--color-white);
+			position: sticky;
+			top: 0;
+			z-index: 999;
+			font-family: $font-primary;
+
+
+			.mat-toolbar-row {
+				justify-content: space-between;
+
+				mat-icon {
+					color: var(--color-white) !important;
+				}
+
+				img {
+					height: 60px;
+					width: 70px;
+				}
+
+				a {
+					color: var(--color-white);
+					font-size: 1rem;
+					letter-spacing: 1px;
+					font-family: $font-primary;
+					text-decoration: none;
+				}
+			}
+		}
+
+		mat-sidenav-container {
+			mat-sidenav {
+				.mat-drawer-inner-container {
+					mat-nav-list {
+						display: flex;
+						justify-content: flex-start;
+						flex-direction: column;
+
+						a {
+							color: var(--color-primary);
+							font-size: 1rem;
+							letter-spacing: 1px;
+							font-family: $font-primary;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+
+			.mat-sidenav-content {
+				.welcome-banner {
+					position: relative;
+					img {
+						width: 100%;
+					}
+					.welcome-text {
+						background-color: rgba(0, 0, 0, 0.6);
+						position: absolute;
+						top: 0;
+						height: 100%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+						padding: 0 1rem;
+
+						h3 {
+							color: var(--color-white);
+							font-size: 2.5rem;
+							line-height: 4rem;
+							text-transform: capitalize;
+						}
+
+						p {
+							font-size: 1.5rem;
+							color: var(--color-white);
+							line-height: 2rem;
+							text-align: center;
+							text-transform: capitalize;
+						}
+					}	
+				}
+			}
+		}
+	}
+}

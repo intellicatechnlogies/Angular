@@ -1,0 +1,110 @@
+<fin-breadcrumb [breadcrumbs]="breadcrumbs"></fin-breadcrumb>
+
+<div class="fin-kyc">
+  <fin-card>
+    <div class="kyc-container">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="rc">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> RC </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'RC Number'" [type]="'number'" [required]="true"
+                    [placeholder]="'RC Number'"></fin-input>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="uan">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>UAN</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'UAN Number'" [type]="'number'" [required]="true"
+                    [placeholder]="'UAN Number'"></fin-input>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="corporate">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>Corporate</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'Mobile Number '" [type]="'number'" [required]="true"
+                    [placeholder]="'Mobile Number'"></fin-input>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="Voter">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>Voter</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'EPIC Number '" [type]="'number'" [required]="true"
+                    [placeholder]="'EPIC Number'"></fin-input>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="dl">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> DL </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'DL Number'" [type]="'number'" [required]="true"
+                    [placeholder]="'DL Number'"></fin-input>
+                  <fin-date-picker [label]="'Date of Birth'" [required]="true"
+                    [placeholder]="'Date of Birth'"></fin-date-picker>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="pan">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> PAN </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                  <fin-input [label]="'PAN Number'" [type]="'number'" [required]="true"
+                    [placeholder]="'PAN Number'"></fin-input>
+                  <fin-date-picker [label]="'Date of Birth'" [required]="true"
+                    [placeholder]="'Date of Birth'"></fin-date-picker>
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fin-card>
+</div>

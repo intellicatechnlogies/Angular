@@ -4,9 +4,11 @@ import { PageNotFoundComponent } from './_modules/shared/_components/page-not-fo
 import { MainComponent } from './_modules/shared/_components/main/main.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/main/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/landing-page/home', pathMatch: 'full' },
+  { path: 'landing-page', loadChildren: () => import('./_modules/landing/landing.module').then(m => m.LandingModule) },
   { path: 'main', component: MainComponent , children: [
     { path: 'dashboard', loadChildren: () => import('./_modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+    { path: 'services', loadChildren: () => import('./_modules/services/services.module').then(m => m.ServicesModule) },
     ]
   },
   { path: '**', component: PageNotFoundComponent }

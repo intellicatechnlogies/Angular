@@ -1,0 +1,19 @@
+::ng-deep {
+  .fin-kyc {
+    .kyc-container {
+      padding: 1rem;
+
+      .mat-accordion{
+        .mat-expansion-panel{
+          box-shadow: none;
+          border: 1px solid var(--color-primary);
+          margin: 1rem 0;
+          background-color: transparent;
+          .mat-expansion-panel-header-title {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}
