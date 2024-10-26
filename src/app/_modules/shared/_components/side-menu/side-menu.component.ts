@@ -49,7 +49,7 @@ export class SideMenuComponent implements OnInit {
         {
           label: 'KYC',
           icon: '/assets/images/minus.svg',
-          path: '/main/financial/annual-action-plan',
+          path: '/main/services/kyc',
           type: '',
           roles: [],
           sequence: 1
@@ -57,7 +57,7 @@ export class SideMenuComponent implements OnInit {
         {
           label: 'IDR',
           icon: '/assets/images/minus.svg',
-          path: '/main/financial/annual-action-plan',
+          path: '/main/services/idr',
           type: '',
           roles: [],
           sequence: 1
@@ -65,7 +65,7 @@ export class SideMenuComponent implements OnInit {
         {
           label: 'Face Compare',
           icon: '/assets/images/minus.svg',
-          path: '/main/financial/annual-action-plan',
+          path: '/main/services/face-compare',
           type: '',
           roles: [],
           sequence: 1
