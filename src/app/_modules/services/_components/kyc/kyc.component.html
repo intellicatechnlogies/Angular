@@ -11,8 +11,8 @@
                 <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
                   <mat-panel-title> RC </mat-panel-title>
                 </mat-expansion-panel-header>
-                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
-                  <fin-input [label]="'RC Number'" [type]="'number'" [required]="true"
+                <form (ngSubmit)="onSubmit(rcForm, 'Rc', $event)" #rcForm="ngForm" id="Rc">
+                  <fin-input [label]="'RC Number'"  [type]="'number'" [required]="true"
                     [placeholder]="'RC Number'"></fin-input>
                   <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
                 </form>
