@@ -13,14 +13,8 @@ export class KycComponent {
       link: '/main/services/kyc'
     }
   ];
-
-
-
-
-
-
-
-
+ 
+  // rcNumber: number| null = null;;
   onSubmit(form: NgForm, formId: string, event: Event): void {
     event.preventDefault(); // Prevent default form submission
     
@@ -51,6 +45,7 @@ export class KycComponent {
         console.log('PAN Number:', panNumber, 'DOB:', dob);
 
       } else if (formId === 'RC') {
+        // console.log(this.rcNumber);
         // Handle RC form data
         const rcData = form.value;
         console.log('RC Data:', rcData);

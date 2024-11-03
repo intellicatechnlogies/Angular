@@ -1,139 +1,166 @@
-<div class="face-compare-contianer">
-    <mat-accordion class="example-headers-align face-compare-contianer-expansions" multi>
+<fin-breadcrumb [breadcrumbs]="breadcrumbs"></fin-breadcrumb>
 
-        <!-- DL expansion -->
-        <mat-expansion-panel class="face-compare-expansion-panel">
-            <mat-expansion-panel-header>
-                <mat-panel-title> DL </mat-panel-title>
-            </mat-expansion-panel-header>
-        
-            <form (ngSubmit)="onSubmit(dlForm, 'DL', $event)" #dlForm="ngForm" id="DL">
-    
-                <div class="face-compare-dl-img">
-                    <label>DL Image</label>
-                    <input name="dlNumberimg" type="file" accept="image/*" ngModel required/>
-                </div>
-        
-                <div class="face-compare-btn-container">
-                    <button type="submit" name="dlsubmitButton" id="dlsubmitBtn">Submit</button>
-                </div>
-            </form>
-        </mat-expansion-panel>
-  
-      <!-- PAN card expansion -->
-      <mat-expansion-panel class="face-compare-expansion-panel">
-        <mat-expansion-panel-header>
-          <mat-panel-title> PAN </mat-panel-title>
-        </mat-expansion-panel-header>
-  
-        <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+<div class="fin-face-compare">
+  <fin-card>
+    <div class="face-compare-container">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="dl">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> DL </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(dlForm, 'Dl', $event)" #dlForm="ngForm" id="Dl">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
 
-          <div class="face-compare-pan-img">
-            <label>PAN Image</label>
-            <input name="panNumberimg" type="file" accept="image/*" ngModel required/>
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="dlubmitButton" id="dlsubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
-          
-          <div class="face-compare-btn-container">
-            <button type="submit" name="pansubmitButton" id="pansubmitBtn">Submit</button>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="pan">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> PAN </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
+
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="panubmitButton" id="pansubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
-        </form>
-      </mat-expansion-panel>
-  
-  
-      <!-- Voter expansion -->
-      <mat-expansion-panel class="face-compare-expansion-panel">
-        <mat-expansion-panel-header>
-          <mat-panel-title> Voter </mat-panel-title>
-        </mat-expansion-panel-header>
-  
-        <form (ngSubmit)="onSubmit(voterForm, 'Voter', $event)" #voterForm="ngForm" id="Voter">
-          <div class="face-compare-pan-img">
-            <label>Voter Image</label>
-            <input name="voterimg" type="file" accept="image/*" ngModel required/>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="Voter">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> Voter </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(voterForm, 'Voter', $event)" #voterForm="ngForm" id="Voter">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
+
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="votersubmitButton" id="votersubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
-          
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="Aadhaar">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> Aadhaar </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(AadhaarForm, 'Aadhaar', $event)" #AadhaarForm="ngForm" id="Aadhaar">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
 
-          <div class="face-compare-btn-container">
-            <button type="submit" name="votersubmitButton" id="voterubmitBtn">Submit</button>
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="AadhaarsubmitButton" id="AadhaarsubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
-        </form>
-      </mat-expansion-panel>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="Passport">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> Passport </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(passportForm, 'Passport', $event)" #passportForm="ngForm" id="Passport">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
 
-       <!-- Aadhaar expansion -->
-        <mat-expansion-panel class="face-compare-expansion-panel">
-            <mat-expansion-panel-header>
-            <mat-panel-title> Aadhaar </mat-panel-title>
-            </mat-expansion-panel-header>
-        
-            <form (ngSubmit)="onSubmit(aadhaarForm, 'Aadhaar', $event)" #aadhaarForm="ngForm" id="Aadhaar">
-            <div class="face-compare-pan-img">
-                <label>Aadhaar Image</label>
-                <input name="aadhaarimg" type="file" accept="image/*" ngModel required/>
-            </div>
-            
-        
-            <div class="face-compare-btn-container">
-                <button type="submit" name="aadhaarsubmitButton" id="aadhaarsubmitBtn">Submit</button>
-            </div>
-            </form>
-        </mat-expansion-panel>
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="passportsubmitButton" id="passportsubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="Other">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title> Other </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form (ngSubmit)="onSubmit(otherForm, 'Other', $event)" #otherForm="ngForm" id="Other">
+                    <div class="image-field">
+                      <label for="imageInput">Upload Image:</label>
+                      <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
+                    </div>
 
-        <!-- Passport expansion -->
-        <mat-expansion-panel class="face-compare-expansion-panel">
-            <mat-expansion-panel-header>
-            <mat-panel-title> Passport </mat-panel-title>
-            </mat-expansion-panel-header>
-    
-            <form (ngSubmit)="onSubmit(psprtForm, 'Passport', $event)" #psprtForm="ngForm" id="Passport">
-            <div class="face-compare-psprt-img">
-                <label>Passport Image</label>
-                <input name="psprtirmg" type="file" accept="image/*" ngModel required/>
-            </div>
-            
-
-            <div class="face-compare-btn-container">
-                <button type="submit" name="psprtsubmitButton" id="psprtsubmitBtn">Submit</button>
-            </div>
-            </form>
-        </mat-expansion-panel>
-
-         <!-- Other expansion -->
-        <mat-expansion-panel class="face-compare-expansion-panel">
-            <mat-expansion-panel-header>
-            <mat-panel-title> Other </mat-panel-title>
-            </mat-expansion-panel-header>
-    
-            <form (ngSubmit)="onSubmit(otherForm, 'Other', $event)" #otherForm="ngForm" id="Other">
-            <div class="face-compare-other-img">
-                <label>Other Image</label>
-                <input name="otherimg" type="file" accept="image/*" ngModel required/>
-            </div>
-            
-
-            <div class="face-compare-btn-container">
-                <button type="submit" name="othersubmitButton" id="othersubmitBtn">Submit</button>
-            </div>
-            </form>
-        </mat-expansion-panel>
-
-         <!-- Live  expansion -->
-        <mat-expansion-panel class="face-compare-expansion-panel">
-            <mat-expansion-panel-header>
-            <mat-panel-title> Live  </mat-panel-title>
-            </mat-expansion-panel-header>
-    
-            <form (ngSubmit)="onSubmit(liveForm, 'Live', $event)" #liveForm="ngForm" id="Live">
-            <div class="face-compare-live-img">
-                <label>Live  Image</label>
-                <input name="liveimg" type="file" accept="image/*" ngModel required/>
-            </div>
-            
-
-            <div class="face-compare-btn-container">
-                <button type="submit" name="livesubmitButton" id="livesubmitBtn">Submit</button>
-            </div>
-            </form>
-        </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-  
+                    <div class="image-field">
+                      <label for="liveimageInput">Upload Live Image:</label>
+                      <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
+                    </div> 
+                  
+                    <div class="face-compare-btn-container">
+                      <button type="submit" name="othersubmitButton" id="othersubmitBtn">Submit</button>
+                    </div>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fin-card>
+</div>

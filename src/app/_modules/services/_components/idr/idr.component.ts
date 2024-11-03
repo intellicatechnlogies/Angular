@@ -9,23 +9,16 @@ import { NgForm } from '@angular/forms'; // Import NgForm
 })
 export class IdrComponent {
 
+  breadcrumbs = [
+    {
+      label: 'Services',
+      link: '/main/services/idr'
+    }
+  ];
+
   onSubmit(form: NgForm, formId: string, event: Event): void {
     event.preventDefault(); // Prevent default form submission
     
-    console.log('Form ID:', formId);
-    console.log('Form Valid:', form.valid);
-    console.log('Form Errors:', form.errors); 
-
-    // Debugging each control's validity
-    for (const controlName in form.controls) {
-      if (form.controls.hasOwnProperty(controlName)) {
-        const control = form.controls[controlName];
-        console.log(`Control ${controlName} - Valid:`, control.valid);
-        console.log(`Control ${controlName} - Value:`, control.value);
-        console.log(`Control ${controlName} - Errors:`, control.errors);  // Display any control-specific errors
-      }
-    }
-
     if (form.valid) {
       // Handle different forms based on formId
       if (formId === 'PAN') {
