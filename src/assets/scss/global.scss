@@ -64,10 +64,24 @@ a {
 
 input {
   color: var(--color-black) !important;
-
+  
   &::placeholder {
     color: var(--color-black) !important;
   }
+}
+
+input[type="file"] {
+  color: var(--color-primary) !important;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type=file]::file-selector-button {
+  border: 1px solid var(--color-primary) !important;
+  padding: .5rem;
+  border-radius: .5rem;
+  background-color: var(--color-white) !important;
+  transition: 1s;
 }
 
 .cursor {

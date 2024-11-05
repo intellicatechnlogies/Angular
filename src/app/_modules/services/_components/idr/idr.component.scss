@@ -1,48 +1,19 @@
 ::ng-deep {
-  .fin-idr {
-    .idr-contianer{
-        padding: 1rem;
-        // &-expansions{
-        //   .idr-expansion-panel{
-        //     margin-bottom: 1rem;
-        //     mat-form-field{
-        //       margin-right: 1rem;
-        //       .mdc-text-field--filled:not(.mdc-text-field--disabled){
-        //         background-color: unset !important;
-        //       }
-        //       input{
-        //         padding: 1rem 0;
-        //       }
-        //     }
-        //     form{
-        //       display: flex;
-        //       gap: 1rem;
-        //       .idr-btn-container{
-        //         button{
-        //           background-color:  #0f3ebe;
-        //           color: #fff;
-        //           border: 1px solid #0f3ebe;
-        //           border-radius: 8px;
-        //           padding: 10px 15px;
-        //           margin: 5px 0;
-        //         }
-        //       }
-        //     }
-            
-        //   }
-        // }
-        .mat-accordion{
-          .mat-expansion-panel{
-            box-shadow: none;
-            border: 1px solid var(--color-primary);
-            margin: 1rem 0;
-            background-color: transparent;
-            .mat-expansion-panel-header-title {
-              color: var(--color-primary);
-            }
+  .fin-kyc {
+    .kyc-container {
+      padding: 1rem;
+
+      .mat-accordion{
+        .mat-expansion-panel{
+          box-shadow: none;
+          border: 1px solid var(--color-primary);
+          margin: 1rem 0;
+          background-color: transparent;
+          .mat-expansion-panel-header-title {
+            color: var(--color-primary);
           }
         }
-      
+      }
     }
   }
 }
