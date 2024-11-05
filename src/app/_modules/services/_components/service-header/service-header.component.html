@@ -1,0 +1,16 @@
+<fin-card>
+		<div class="service-history">
+		<div fxLayout="row wrap" fxLayoutAlign="space-between start">
+			<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+				<fin-input [label]="'Application Number'" [type]="'text'" [required]="true"
+					[placeholder]="'Application Number'"></fin-input>
+			</div>
+			<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48">
+				<fin-select [label]="'State'" [required]="true" [placeholder]="'State'" [optionsList]="[]"></fin-select>
+			</div>
+			<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48">
+				<fin-select [label]="'Product'" [required]="true" [placeholder]="'Product'" [optionsList]="[]"></fin-select>
+			</div>
+		</div>
+	</div>
+</fin-card>

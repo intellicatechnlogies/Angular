@@ -10,6 +10,10 @@ export class KycComponent {
   breadcrumbs = [
     {
       label: 'Services',
+      link: '/main/services'
+    },
+    {
+      label: 'KYC',
       link: '/main/services/kyc'
     }
   ];

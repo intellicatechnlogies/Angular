@@ -1,11 +1,81 @@
 <fin-breadcrumb [breadcrumbs]="breadcrumbs"></fin-breadcrumb>
+<fin-service-header></fin-service-header>
 
 <div class="fin-face-compare">
   <fin-card>
     <div class="face-compare-container">
       <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label [label]="'Upload Live Image'"></fin-label>
+              <input name="liveimageInput" id="liveimageInput" type="file" accept="image/*" required ngModel
+                (change)="onLiveImageChange($event)" />
+            </div>
+          </div>
+        </div>
         <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="dl">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label  [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label  [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label  [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label  [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="face-compare">
+            <div class="image-field">
+              <fin-label  [label]="'Upload Image For DL'"></fin-label>
+              <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="action-button">
+          <fin-button [type]="'primary'" [label]="'Compare'" ></fin-button>
+          <fin-button [type]="'secondary'" [label]="'Reset'" ></fin-button>
+        </div>
+
+
+
+        <!-- <div class="dl">
             <mat-accordion multi>
               <mat-expansion-panel>
                 <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
@@ -13,12 +83,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(dlForm, 'Dl', $event)" #dlForm="ngForm" id="Dl">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -29,7 +99,7 @@
               </mat-expansion-panel>
             </mat-accordion>
           </div>
-        </div>
+          </div>
         <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
           <div class="pan">
             <mat-accordion multi>
@@ -39,12 +109,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -65,12 +135,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(voterForm, 'Voter', $event)" #voterForm="ngForm" id="Voter">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -91,12 +161,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(AadhaarForm, 'Aadhaar', $event)" #AadhaarForm="ngForm" id="Aadhaar">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -117,12 +187,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(passportForm, 'Passport', $event)" #passportForm="ngForm" id="Passport">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -143,12 +213,12 @@
                 </mat-expansion-panel-header>
                 <form (ngSubmit)="onSubmit(otherForm, 'Other', $event)" #otherForm="ngForm" id="Other">
                     <div class="image-field">
-                      <label for="imageInput">Upload Image:</label>
+                      <fin-label for="imageInput">Upload Image:</fin-label>
                       <input name="imageInput" id="imageInput" type="file" accept="image/*" required ngModel (change)="onFileChange($event)"/>
                     </div>
 
                     <div class="image-field">
-                      <label for="liveimageInput">Upload Live Image:</label>
+                      <fin-label for="liveimageInput">Upload Live Image:</fin-label>
                       <input name="liveimageInput"  id="liveimageInput" type="file" accept="image/*" required ngModel (change)="onLiveImageChange($event)"/>
                     </div> 
                   
@@ -159,7 +229,7 @@
               </mat-expansion-panel>
             </mat-accordion>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </fin-card>
