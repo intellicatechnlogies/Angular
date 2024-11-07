@@ -14,19 +14,42 @@ export class FaceCompareComponent {
       link: '/main/services/face-compare'
     }
   ];
-  base64UploadImage: string | undefined;
+  toggelitems = [
+    { name: 'DL', isToggled: false },
+    { name: 'PAN', isToggled: false },
+    { name: 'Voter', isToggled: false },
+    { name: 'Aadhaar', isToggled: false },
+    { name: 'Passport', isToggled: false },
+    { name: 'Other', isToggled: false }
+  ];
+
+  toggleItem(index: number, event: boolean) {
+
+    this.toggelitems[index].isToggled = !this.toggelitems[index].isToggled;
+    // const checkedItems = this.getCheckedItems();
+    const checkedItems = this.toggelitems.filter(item => item.isToggled);
+    this.checkedItemsLength = checkedItems.length;
+
+  } 
+
+  // base64UploadImage: string | undefined;
   base64LiveImage: string | undefined;
+  base64UploadImages: { [key: string]: string } = {};
+  checkedItemsLength: number = 0;
   data: any;
 
   constructor(private http: HttpClient) {}
 
   onFileChange(event: Event): void {
     const file = (event.target as HTMLInputElement).files?.[0];
+    const uploaded_image_toogle = file?(event.target as HTMLInputElement).id : '';
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        this.base64UploadImage = reader.result as string;
+        // this.base64UploadImage = reader.result as string;
+        // return reader.result as string;
+        this.base64UploadImages[uploaded_image_toogle] = reader.result as string;
       };
     }
   }
@@ -44,7 +67,7 @@ export class FaceCompareComponent {
 
   onSubmit(form: NgForm, formId: string, event: Event): void {
     event.preventDefault(); // Prevent default form submission
-        
+    console.log('hi satyam');
     // console.log(this.base64UploadImage);
     // console.log(this.base64LiveImage);
     // console.log('Form ID:', formId);
@@ -61,30 +84,16 @@ export class FaceCompareComponent {
     //   }
     // }
 
-    if (form.valid) {
-      
-      // // Handle different forms based on formId
-      // if (formId === 'Dl') {
-      //   // Handle PAN form data
-      //   const dlData = form.value;
-      //   const img_1 = dlData.imageInput;
-      //   console.log('img_1 :', img_1);
 
-      // } else if (formId === 'RC') {
-      //   // console.log(this.rcNumber);
-      //   // Handle RC form data
-      //   const rcData = form.value;
-      //   console.log('RC Data:', rcData);
-
-      //   // Access the RC number
-      //   const rcNumber = rcData.rcNumber;
-      //   console.log('RC Number:', rcNumber);
-      // }
-
-      // You can now send this data to an API or further processing
-      this.getData();
-    } else {
-      console.log('Form is invalid');
+    if(this.checkedItemsLength == Object.keys(this.base64UploadImages).length && Object.keys(this.base64UploadImages).length >= 1){
+      if (form.valid) {
+        // You can now send this data to an API or further processing
+        this.getData();
+      } else {
+        console.log('Form is invalid');
+      }
+    }else{
+      alert("Please select at least one toggle. If you have already selected a toggle, please upload the corresponding image.");
     }
   }
 
@@ -97,16 +106,26 @@ export class FaceCompareComponent {
       'api-id': 'cdef',    // Replace with your API ID
       'Content-Type': 'application/json' 
     });
+    let i = 1;
+    const data: { [key: string]: string } = {};
+    for (const key of Object.keys(this.base64UploadImages)) {
+      data[`img${i}`] = this.base64UploadImages[key] ? 
+    this.base64UploadImages[key].replace('data:image/png;base64,', '') : '';
+    i++;
+    }
+    data[`img${i}`]  = this.base64LiveImage ? this.base64LiveImage.replace('data:image/png;base64,', '') : '';
 
-    const data = {
-      img1: this.base64UploadImage ? this.base64UploadImage.replace('data:image/png;base64,', '') : '',
-      img2: this.base64LiveImage ? this.base64LiveImage.replace('data:image/png;base64,', '') : '',
-    }; 
+    // const data = {
+    //   img1: this.base64UploadImage ? this.base64UploadImage.replace('data:image/png;base64,', '') : '',
+    //   img2: this.base64LiveImage ? this.base64LiveImage.replace('data:image/png;base64,', '') : '',
+    // }; 
+    console.log(data);
 
     this.http.post(this.apiUrl, data, { headers }).subscribe(
       (response) => {
         this.data = response;
-        console.log(this.data);
+        alert(JSON.stringify(this.data.result.cf_overview));
+        // console.log(this.data);
       },
       (error) => {
         console.error('Error fetching data:', error);

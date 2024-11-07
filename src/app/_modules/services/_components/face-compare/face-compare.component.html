@@ -4,81 +4,35 @@
 <div class="fin-face-compare">
   <fin-card>
     <div class="face-compare-container">
-      <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-label [label]="'Upload Live Image'"></fin-label>
-              <input name="liveimageInput" id="liveimageInput" type="file" accept="image/*" required ngModel
+      <form (ngSubmit)="onSubmit(fcForm, 'faceCompare', $event)" #fcForm="ngForm" id="faceCompare">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
+            <div class="face-compare">
+              <div class="image-field">
+                <fin-label [label]="'Upload Live Image'"></fin-label>
+                <input name="liveimageInput" id="liveimageInput" type="file" accept="image/*" required ngModel
                 (change)="onLiveImageChange($event)" />
+              </div>
             </div>
           </div>
-        </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
+          <div *ngFor="let item of toggelitems; let i = index">
+            <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+              <div class="face-compare">
+                <div class="image-field">
+                  <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For '+item.name" [checked]="item.isToggled" (checkedChange)="toggleItem(i, $event)"></fin-checkbox>
+                  <input name="{{ item.name }}mageInput"  id="{{ item.name }}" type="file" accept="image/*" required ngModel  [disabled]="!item.isToggled"
+                  (change)="onFileChange($event)" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
-            </div>
+          
+          <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="action-button">
+            <fin-button [type]="'primary'" [label]="'Compare'" type="submit"></fin-button>
+            <fin-button [type]="'secondary'" [label]="'Reset'"></fin-button>
           </div>
         </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
-            </div>
-          </div>
-        </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
-            </div>
-          </div>
-        </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
-            </div>
-          </div>
-        </div>
-        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-          <div class="face-compare">
-            <div class="image-field">
-              <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For DL'"
-                (checkedChange)="dl.disabled = !$event"></fin-checkbox>
-              <input name="imageInput" id="imageInput" type="file" accept="image/*" #dl required ngModel disabled="true"
-                (change)="onFileChange($event)" />
-            </div>
-          </div>
-        </div>
-        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="action-button">
-          <fin-button [type]="'primary'" [label]="'Compare'"></fin-button>
-          <fin-button [type]="'secondary'" [label]="'Reset'"></fin-button>
-        </div>
-      </div>
+      </form>
     </div>
   </fin-card>
-</div>
+</div> 
