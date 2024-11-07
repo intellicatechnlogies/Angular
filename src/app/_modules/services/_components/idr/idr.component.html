@@ -1,130 +1,77 @@
 <fin-breadcrumb [breadcrumbs]="breadcrumbs"></fin-breadcrumb>
 <fin-service-header></fin-service-header>
 
-<div class="fin-idr">
+<div class="fin-kyc">
   <fin-card>
-    <div class="idr-contianer"> 
-        <div fxLayout="row wrap" fxLayoutAlign="space-between start">
-          <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-            <div class="pan">
-              <mat-accordion multi>
-            
-                <!-- PAN card expansion -->
-                <mat-expansion-panel class="idr-expansion-panel">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title> PAN </mat-panel-title>
-                  </mat-expansion-panel-header>
-            
-                  <form (ngSubmit)="onSubmit(panForm, 'PAN', $event)" #panForm="ngForm" id="PAN">
-                    <mat-form-field>
-                      <mat-label>PAN Number</mat-label>
-                      <input matInput name="panNumber" ngModel required/>
-                    </mat-form-field>
-            
-                    <mat-form-field>
-                      <mat-label>Date of Birth</mat-label>
-                      <input matInput [matDatepicker]="picker" (focus)="picker.open()" name="dob" readonly ngModel required />
-                    </mat-form-field>
-                    <mat-datepicker #picker></mat-datepicker> 
-
-                    <div class="idr-pan-img">
-                      <label>PAN Image</label>
-                      <input name="panNumberimg" type="file" accept="image/*" ngModel required/>
-                    </div>
-
-                    <div class="idr-pan-live-img">
-                      <label>PAN Live Image</label>
-                      <input name="panNumberliveimg" type="file" accept="image/*"  ngModel required/>
-                    </div>
-                    
-            
-                    <div class="idr-btn-container">
-                      <!-- <button type="submit" name="pansubmitButton" id="pansubmitBtn" [type]="'primary'">Submit</button> -->
-                      <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
-                    </div>
-                  </form>
-                </mat-expansion-panel>
-            
-              </mat-accordion>
-            </div>
-          </div>
-          <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-            <div class="dl">
-              <mat-accordion multi>
-            
-                  <!-- DL expansion -->
-                  <mat-expansion-panel class="idr-expansion-panel">
-                      <mat-expansion-panel-header>
-                        <mat-panel-title> DL </mat-panel-title>
-                      </mat-expansion-panel-header>
-                
-                      <form (ngSubmit)="onSubmit(dlForm, 'DL', $event)" #dlForm="ngForm" id="DL">
-                        <mat-form-field>
-                          <mat-label>DL Number</mat-label>
-                          <input matInput name="dlNumber" ngModel required/>
-                        </mat-form-field>
-                
-                        <mat-form-field>
-                          <mat-label>Date of Birth</mat-label>
-                          <input matInput [matDatepicker]="picker" (focus)="picker.open()" name="dldob" readonly ngModel required />
-                        </mat-form-field>
-                        <mat-datepicker #picker></mat-datepicker> 
-              
-                        <div class="idr-dl-img">
-                          <label>DL Image</label>
-                          <input name="dlNumberimg" type="file" accept="image/*" ngModel required/>
-                        </div>
-              
-                        <div class="idr-dl-live-img">
-                          <label>DL Live Image</label>
-                          <input name="dlumberliveimg" type="file" accept="image/*" ngModel required/>
-                        </div>
-                        
-                
-                        <div class="idr-btn-container">
-                          <button type="submit" name="dlsubmitButton" id="dlsubmitBtn">Submit</button>
-                        </div>
-                      </form>
-                  </mat-expansion-panel>
-              </mat-accordion>
-            </div>
-          </div>
-          <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-            <div class="voter">
-              <mat-accordion multi>
-   
-                <mat-expansion-panel class="idr-expansion-panel">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title> Voter </mat-panel-title>
-                  </mat-expansion-panel-header>
-            
-                  <form (ngSubmit)="onSubmit(voterForm, 'Voter', $event)" #voterForm="ngForm" id="Voter">
-                    <mat-form-field>
-                      <mat-label>EPIC Number</mat-label>
-                      <input matInput name="epicNumber" ngModel required/>
-                    </mat-form-field>
-            
-
-                    <div class="idr-pan-img">
-                      <label>Voter Image</label>
-                      <input name="voterimg" type="file" accept="image/*" ngModel required/>
-                    </div>
-
-                    <div class="idr-pan-live-img">
-                      <label>Live Image</label>
-                      <input name="voterliveimg" type="file" accept="image/*"  ngModel required/>
-                    </div>
-                    
-            
-                    <div class="idr-btn-container">
-                      <button type="submit" name="votersubmitButton" id="voterubmitBtn">Submit</button>
-                    </div>
-                  </form>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
+    <div class="kyc-container">
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="rc">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>PAN</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form>
+                  <fin-input [label]="'PAN Number'" [type]="'text'" [required]="true"
+                    [placeholder]="'PAN Number'"></fin-input>
+                  <fin-date-picker [label]="'Date of Birth'" [required]="true"
+                    [placeholder]="'Date of Birth'"></fin-date-picker>
+                  <fin-label [label]="'PAN Image'"></fin-label>
+                  <input type="file">
+                  <fin-label [label]="'PAN Live Image'"></fin-label>
+                  <input type="file">
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
         </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="rc">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>DL</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form>
+                  <fin-input [label]="'DL Number'" [type]="'text'" [required]="true"
+                    [placeholder]="'DL Number'"></fin-input>
+                  <fin-date-picker [label]="'Date of Birth'" [required]="true"
+                    [placeholder]="'Date of Birth'"></fin-date-picker>
+                  <fin-label [label]="'DL Image'"></fin-label>
+                  <input type="file">
+                  <fin-label [label]="'DL Live Image'"></fin-label>
+                  <input type="file">
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+          <div class="rc">
+            <mat-accordion multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+                  <mat-panel-title>Voter</mat-panel-title>
+                </mat-expansion-panel-header>
+                <form>
+                  <fin-input [label]="'EPIC Number'" [type]="'text'" [required]="true"
+                    [placeholder]="'EPIC Number'"></fin-input>
+                  <fin-date-picker [label]="'Date of Birth'" [required]="true"
+                    [placeholder]="'Date of Birth'"></fin-date-picker>
+                  <fin-label [label]="'Voter Image'"></fin-label>
+                  <input type="file">
+                  <fin-label [label]="'Voter Live Image'"></fin-label>
+                  <input type="file">
+                  <fin-button [label]="'Submit'" [type]="'primary'"></fin-button>
+                </form>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
     </div>
   </fin-card>
 </div>

@@ -71,6 +71,41 @@ export class SideMenuComponent implements OnInit {
           sequence: 1
         },
       ]
+    },
+    {
+      type: 'sub',
+      label: 'Services History',
+      path: '',
+      iconSelected: '/assets/images/financialSelected.svg',
+      icon: '/assets/images/financial.svg',
+      roles: [],
+      sequence: 2,
+      children: [
+        {
+          label: 'KYC',
+          icon: '/assets/images/minus.svg',
+          path: '/main/services/kyc',
+          type: '',
+          roles: [],
+          sequence: 1
+        },
+        {
+          label: 'IDR',
+          icon: '/assets/images/minus.svg',
+          path: '/main/services/idr',
+          type: '',
+          roles: [],
+          sequence: 1
+        },
+        {
+          label: 'Face Compare',
+          icon: '/assets/images/minus.svg',
+          path: '/main/services/face-compare',
+          type: '',
+          roles: [],
+          sequence: 1
+        },
+      ]
     }
   ];
 
