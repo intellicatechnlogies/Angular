@@ -28,8 +28,8 @@
           </div>
           
           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="action-button">
-            <fin-button [type]="'primary'" [label]="'Compare'" type="submit"></fin-button>
-            <fin-button [type]="'secondary'" [label]="'Reset'"></fin-button>
+            <fin-button [type]="'primary'" [label]="'Compare'" type="submit" (click)="onSubmit(fcForm, 'faceCompare', $event)"></fin-button>
+            <fin-button [type]="'secondary'" [label]="'Reset'" (click)="onReset(fcForm)"></fin-button>
           </div>
         </div>
       </form>

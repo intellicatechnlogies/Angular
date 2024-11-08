@@ -67,7 +67,6 @@ export class FaceCompareComponent {
 
   onSubmit(form: NgForm, formId: string, event: Event): void {
     event.preventDefault(); // Prevent default form submission
-    console.log('hi satyam');
     // console.log(this.base64UploadImage);
     // console.log(this.base64LiveImage);
     // console.log('Form ID:', formId);
@@ -119,18 +118,30 @@ export class FaceCompareComponent {
     //   img1: this.base64UploadImage ? this.base64UploadImage.replace('data:image/png;base64,', '') : '',
     //   img2: this.base64LiveImage ? this.base64LiveImage.replace('data:image/png;base64,', '') : '',
     // }; 
-    console.log(data);
 
     this.http.post(this.apiUrl, data, { headers }).subscribe(
       (response) => {
         this.data = response;
         alert(JSON.stringify(this.data.result.cf_overview));
-        // console.log(this.data);
+        console.log(this.data);
       },
       (error) => {
         console.error('Error fetching data:', error);
       }
     );
+  }
+  onReset(form: NgForm) {
+    form.reset(); 
+    this.toggelitems.forEach(item => {
+      item.isToggled = false; // Uncheck all checkboxes
+    });
+
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach((input) => {
+      if (input instanceof HTMLInputElement) {
+        input.value = ''; // Clear the file input value
+      }
+    });
   }
 
 }
