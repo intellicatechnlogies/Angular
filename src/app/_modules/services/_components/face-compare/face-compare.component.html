@@ -1,38 +1,37 @@
 <fin-breadcrumb [breadcrumbs]="breadcrumbs"></fin-breadcrumb>
-<fin-service-header></fin-service-header>
+<fin-service-header #serviceHeader (onChange)="onHeaderChange($event)"></fin-service-header>
 
 <div class="fin-face-compare">
   <fin-card>
     <div class="face-compare-container">
-      <form (ngSubmit)="onSubmit(fcForm, 'faceCompare', $event)" #fcForm="ngForm" id="faceCompare">
+      <form #fcForm="ngForm">
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100">
             <div class="face-compare">
               <div class="image-field">
                 <fin-label [label]="'Upload Live Image'"></fin-label>
-                <input name="liveimageInput" id="liveimageInput" type="file" accept="image/*" required ngModel
-                (change)="onLiveImageChange($event)" />
+                <input name="liveimageInput" type="file" accept="image/*" required ngModel 
+                  (change)="onLiveImageChange($event)" />
               </div>
             </div>
           </div>
-          <div *ngFor="let item of toggelitems; let i = index">
-            <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
-              <div class="face-compare">
-                <div class="image-field">
-                  <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For '+item.name" [checked]="item.isToggled" (checkedChange)="toggleItem(i, $event)"></fin-checkbox>
-                  <input name="{{ item.name }}mageInput"  id="{{ item.name }}" type="file" accept="image/*" required ngModel  [disabled]="!item.isToggled"
-                  (change)="onFileChange($event)" />
-                </div>
+          <div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31"
+            *ngFor="let item of toggelitems; let i = index">
+            <div class="face-compare">
+              <div class="image-field">
+                <fin-checkbox [labelPosition]="'after'" [label]="'Upload Image For '+item.name"
+                  [checked]="item.isToggled" (checkedChange)="toggleItem(i, $event)"></fin-checkbox>
+                <input name="{{ item.ngModelName }}"   type="file" accept="image/*" required
+                  ngModel [disabled]="!item.isToggled" (change)="onFileChange($event, i)" />
               </div>
             </div>
           </div>
-          
           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="action-button">
-            <fin-button [type]="'primary'" [label]="'Compare'" type="submit"></fin-button>
-            <fin-button [type]="'secondary'" [label]="'Reset'"></fin-button>
+            <fin-button [type]="'primary'" [label]="'Compare'" (afterClick)="onSubmit(fcForm)"></fin-button>
+            <fin-button [type]="'secondary'" [label]="'Reset'" (afterClick)="fcForm.reset(); resetForm()"></fin-button>
           </div>
         </div>
       </form>
     </div>
   </fin-card>
-</div> 
+</div>
