@@ -3,6 +3,8 @@ import { FaceCompareService } from '../../../../_services/faceCompare/face-compa
 import { NgForm } from '@angular/forms';
 import { SnackbarService } from '../../../../_services/snackbar/snackbar.service';
 import { ServiceHeaderComponent } from '../service-header/service-header.component';
+import { ResultComponent } from '../result/result.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'fin-face-compare',
@@ -43,7 +45,8 @@ export class FaceCompareComponent {
   constructor(
     private cd: ChangeDetectorRef,
     private faceCompareService: FaceCompareService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private matDialog: MatDialog
   ) { }
 
   onHeaderChange(event: any) { 
@@ -119,6 +122,7 @@ export class FaceCompareComponent {
     this.faceCompareService.saveFaceCompare(data).subscribe({
       next: (res: any) => {
         if(res.response_code === '101') {
+          this.openResultDialog(res);
           this.resetForm();
           this.serviceHeader.reset();
           this.snackbarService.successSnackbar(res.response_message);
@@ -131,6 +135,23 @@ export class FaceCompareComponent {
         console.log('complete');
       }
     });
+  }
+
+  /**
+   * Mat Dialog
+   * @param data 
+   */
+  openResultDialog(data: any) {
+    this.matDialog.open(ResultComponent, {
+      width: '80vw',
+      height: 'auto',
+      enterAnimationDuration: '200ms',
+      exitAnimationDuration: '200ms',
+      data:{
+        overView: data.result.cf_overview,
+        result: data.result.cf_result
+      }
+    });  
   }
 
   /**

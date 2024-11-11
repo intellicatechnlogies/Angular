@@ -1,0 +1,62 @@
+<div class='fin-confirmation'>
+	<h4 mat-dialog-title>Compare Result</h4>
+	<mat-dialog-content>
+		<div class="dialog-content">
+			<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Application Number'" [type]="'text'" [required]="false" [readonly]="true"
+						[placeholder]="'Application Number'" [value]="'xxxx-1111-0000'"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'State'" [type]="'text'" [required]="false" [readonly]="true" [placeholder]="'State'"
+						[value]="'HP'"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Product'" [type]="'text'" [required]="false" [readonly]="true" [placeholder]="'Product'"
+						[value]="'xxxx-1111-0000'"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Number Of Invalid Images'" [type]="'text'" [required]="false" [readonly]="true"
+						[placeholder]="'Application Number'" [value]="overView.INVALID"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Number Of Match Images'" [type]="'text'" [required]="false" [readonly]="true"
+						[placeholder]="'Application Number'" [value]="overView.MATCH"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Number Of No Match Images'" [type]="'text'" [required]="false" [readonly]="true"
+						[placeholder]="'Application Number'" [value]="overView.NO_MATCH"></fin-input>
+				</div>
+				<div fxFlex.gt-sm="31" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="31">
+					<fin-input [label]="'Total Number Of Images'" [type]="'text'" [required]="false" [readonly]="true"
+						[placeholder]="'Application Number'" [value]="overView.NUM_IMG"></fin-input>
+				</div>
+			</div>
+			<mat-divider></mat-divider>
+
+			<div class="main-container" fxLayout="row wrap" fxLayoutAlign="space-between center"
+				*ngFor="let item of result; let i = index">
+				<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="image-pair-count">
+					<fin-label [label]="'Image Pair Number :- ' + (i+1)"></fin-label>
+				</div>
+				<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48" class="src-image">
+					<fin-label [label]="'Source Title :- ' + item.SRC_TITLE"></fin-label>
+					<img src="{{item.SRC_IMAGE}}" alt="No Image">
+				</div>
+				<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48" class="target-image">
+					<fin-label [label]="'Target Title :- ' + item.TRGT_TITLE"></fin-label>
+					<img src="{{item.TRGT_TITLE}}" alt="No Image">
+				</div>
+				<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48">
+					<fin-label [label]="'Match Percentage :- ' + item.PERCENT"></fin-label>
+				</div>
+				<div fxFlex.gt-sm="48" fxFlex.gt-xs="48" fxFlex="100" fxFlex.gt-md="48">
+					<fin-label [label]="'Flag Title :- ' + item.FLAG"></fin-label>
+				</div>
+			</div>
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions align="center">
+		<fin-button [label]="'Close'" [type]="'primary'" [disabled]="false" (afterClick)="close()"></fin-button>
+	</mat-dialog-actions>
+</div>
