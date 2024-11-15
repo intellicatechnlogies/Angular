@@ -1,0 +1,20 @@
+# Use Node.js as the base image
+FROM node:18
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the app's source code
+COPY . .
+
+# Expose Angular’s default port
+EXPOSE 4200
+
+# Start the Angular app in development mode
+CMD ["npm", "run", "start"]
