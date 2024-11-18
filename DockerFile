@@ -1,5 +1,5 @@
-# Use Node.js as the base image
-FROM node:18
+# Use a lightweight Node.js image
+FROM node:18-alpine
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the app's source code
 COPY . .
 
-# Expose Angular’s default port
+# Build the app in production mode
+RUN npm run build
+
+# Expose the port
 EXPOSE 4200
 
-# Start the Angular app in development mode
-CMD ["npm", "run", "start"]
+# Start the app in production mode
+CMD ["npm", "run", "start:prod"]
