@@ -1,23 +1,24 @@
-# Use a lightweight Node.js image
+# Build stage
 FROM node:18-alpine
-
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package.json package-lock.json ./
+# Copy package files
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -g @angular/cli
 
 # Copy the rest of the app's source code
 COPY . .
 
-# Build the app in production mode
+# Build the app
 RUN npm run build
 
 # Expose the port
 EXPOSE 4200
 
-# Start the app in production mode
-CMD ["npm", "run", "start:prod"]
+# Update your package.json start script
+# Start the app allowing external connections
+CMD ["npm", "start"]
