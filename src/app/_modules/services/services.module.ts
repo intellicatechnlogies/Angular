@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { IdrComponent } from './_components/idr/idr.component';
 import { FaceCompareComponent } from './_components/face-compare/face-compare.component';
 import { ServiceHeaderComponent } from './_components/service-header/service-header.component';
+import { ResultComponent } from './_components/result/result.component';
 
 
 
@@ -15,7 +16,8 @@ import { ServiceHeaderComponent } from './_components/service-header/service-hea
     KycComponent,
     IdrComponent,
     FaceCompareComponent,
-    ServiceHeaderComponent
+    ServiceHeaderComponent,
+    ResultComponent
   ],
   imports: [
     CommonModule,
