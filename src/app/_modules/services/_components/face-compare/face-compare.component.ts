@@ -5,6 +5,7 @@ import { SnackbarService } from '../../../../_services/snackbar/snackbar.service
 import { ServiceHeaderComponent } from '../service-header/service-header.component';
 import { ResultComponent } from '../result/result.component';
 import { MatDialog } from '@angular/material/dialog';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'fin-face-compare',
@@ -122,10 +123,19 @@ export class FaceCompareComponent {
     this.faceCompareService.saveFaceCompare(data).subscribe({
       next: (res: any) => {
         if(res.response_code === '101') {
-          this.openResultDialog(res);
-          this.resetForm();
-          this.serviceHeader.reset();
-          this.snackbarService.successSnackbar(res.response_message);
+          let request = {};
+          for (const element in res.imageid) {
+            request = {
+              ...request,
+              [element] : this.faceCompareService.getImagePath({imagepath: res.imageid[element]})
+            }
+          }
+          forkJoin(request).subscribe((imageRes: any) => {
+            this.openResultDialog(res, imageRes);
+            this.resetForm();
+            this.serviceHeader.reset();
+            this.snackbarService.successSnackbar(res.response_message);
+          });
         }
       },
       error: (err: any) => {
@@ -141,7 +151,7 @@ export class FaceCompareComponent {
    * Mat Dialog
    * @param data 
    */
-  openResultDialog(data: any) {
+  openResultDialog(data: any, imagePath: any) {
     this.matDialog.open(ResultComponent, {
       width: '80vw',
       height: 'auto',
@@ -149,7 +159,8 @@ export class FaceCompareComponent {
       exitAnimationDuration: '200ms',
       data:{
         overView: data.result.cf_overview,
-        result: data.result.cf_result
+        result: data.result.cf_result,
+        imagePath: imagePath
       }
     });  
   }

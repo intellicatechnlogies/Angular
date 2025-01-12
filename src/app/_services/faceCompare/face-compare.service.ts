@@ -13,4 +13,8 @@ export class FaceCompareService {
   saveFaceCompare(payload: any) {
     return this.httpService.saveRecoard('cface', payload);
   }
+
+  getImagePath(path: any) {
+    return this.httpService.saveRecoard('getImage', path);
+  }
 }

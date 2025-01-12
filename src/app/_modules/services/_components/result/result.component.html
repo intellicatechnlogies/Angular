@@ -34,14 +34,14 @@
 			</div>
 			<mat-divider></mat-divider>
 
-			<div class="main-container" fxLayout="row wrap" fxLayoutAlign="space-between center"
+			<div class="main-container" fxLayout="row wrap" fxLayoutAlign="space-between start"
 				*ngFor="let item of result; let i = index">
 				<div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" fxFlex.gt-md="100" class="image-pair-count">
 					<fin-label [label]="'Image Pair Number :- ' + (i+1)"></fin-label>
 				</div>
 				<div fxFlex.gt-sm="31" fxFlex.gt-xs="31" fxFlex="100" fxFlex.gt-md="31" class="src-image">
 					<fin-label [label]="'Source Title :- ' + item.SRC_TITLE"></fin-label>
-					<img src="{{item.SRC_IMAGE}}" alt="No Image">
+					<img [src]="'data:image/png;base64,' + imagePath[item?.SRC_TITLE].result.img" alt="No Image">
 				</div>
 				<div fxFlex.gt-sm="31" fxFlex.gt-xs="31" fxFlex="100" fxFlex.gt-md="31" class="src-image">
 					<fin-label [label]="'Match Percentage :- ' + item.PERCENT"></fin-label>
@@ -51,7 +51,7 @@
 				</div> -->
 				<div fxFlex.gt-sm="31" fxFlex.gt-xs="31" fxFlex="100" fxFlex.gt-md="31" class="target-image">
 					<fin-label [label]="'Target Title :- ' + item.TRGT_TITLE"></fin-label>
-					<img src="{{item.TRGT_TITLE}}" alt="No Image">
+					<img src="{{ 'data:image/png;base64,' +  imagePath[item.TRGT_TITLE].result.img}}" alt="No Image">
 				</div>
 			</div>
 		</div>

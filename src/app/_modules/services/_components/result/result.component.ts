@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ResultComponent implements OnInit {
   overView: any;
   result: any;
+  imagePath: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -18,6 +19,7 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.overView = this.data.overView;
     this.result = this.data.result;
+    this.imagePath = this.data.imagePath;
   }
 
   close() {
